@@ -30,29 +30,20 @@ def some_heavy_algorithm_2(param):
     return cur_prime
 
 def main():
+    """
+    Minimal example of how to use the parallel_function wrapper
+    Returns: None
 
-    array_length = 3000
-    samples = 3
-    test_idx = [randbelow(array_length) for _ in range(samples)]
+    """
+    array_length = 4000
     params = np.arange(1, array_length)
 
-    # Without parallelization
-    start_time = time.time()
-    results = [some_heavy_algorithm_2(param) for param in params]
-    end_time = time.time()
-    for test in test_idx:
-        print(f"{results[test]}")
-    print(f"Time taken without parallelization: {end_time - start_time} seconds")
 
     # With parallelization
-    start_time = time.time()
     # Control how many parallel processes
     max_cores = 100
     results = parallel_function(some_heavy_algorithm_2, params, max_workers=max_cores)
-    for test in test_idx:
-        print(f"{results[test]}")
-    end_time = time.time()
-    print(f"Time taken with parallelization: {end_time - start_time} seconds")
+
 
 if __name__ == "__main__":
     main()
