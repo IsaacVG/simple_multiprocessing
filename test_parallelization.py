@@ -7,7 +7,7 @@ from main import some_heavy_algorithm_2
 from secrets import randbelow
 
 
-@pytest.mark.parametrize("array_length, samples, max_cores", [(1000, 3, 100), (1000, 10, 100), (1000, 20, 100)])
+@pytest.mark.parametrize("array_length, samples, max_cores", [(3000, 50, 100), (2000, 50, 100), (1000, 50, 100), (3000, 50, 2), (2000, 50, 2), (1000, 50, 2)])
 def test_parallelization(array_length, samples, max_cores):
 
     test_idx = [randbelow(array_length) for _ in range(samples)]
